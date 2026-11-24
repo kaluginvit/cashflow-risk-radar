@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CashFlow Radar — локальная аналитика платёжного календаря, кассовых разрывов и дебиторской задолженности.">
+  <title>CashFlow Radar</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23123f2c%22/><path d=%22M13 43 25 31l9 7 17-19%22 fill=%22none%22 stroke=%22%23c9f05b%22 stroke-width=%226%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+  <div class="disclaimer">Учебный аналитический инструмент · данные обрабатываются только в браузере</div>
+  <header>
+    <nav><a class="brand" href="index.html">CF/RADAR</a><a href="case.html">О проекте</a></nav>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Корпоративные финансы</p>
+        <h1>Найдите кассовый разрыв до того, как он случится</h1>
+        <p class="lead">Загрузите платёжный календарь, оцените дебиторку и проверьте управленческое решение в сценарии «что, если».</p>
+      </div>
+      <div class="hero-note"><span>Локальная обработка</span><strong>CSV не покидает браузер</strong><p>Без регистрации, сервера и передачи финансовых данных.</p></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="setup section">
+      <div class="section-title"><p class="eyebrow">Исходные данные</p><h2>Начните анализ</h2></div>
+      <div class="setup-grid">
+        <label class="upload"><input id="csv-file" type="file" accept=".csv,text/csv"><span>Загрузить CSV</span><small id="file-status">Ожидается файл платёжного календаря</small></label>
+        <label class="field"><span>Начальный остаток, ₽</span><input id="opening-balance" type="number" min="0" step="1000" value="1200000"></label>
+        <div class="setup-actions"><button id="load-sample" class="button secondary" type="button">Использовать учебные данные</button><button id="analyze" class="button" type="button">Построить прогноз</button></div>
+      </div>
+      <p id="error" class="error" role="alert"></p>
+      <details><summary>Формат CSV</summary><p>Колонки: id, date, type, category, counterparty, amount, status, due_date, description. Тип операции: inflow или outflow.</p></details>
+    </section>
+
+    <div id="workspace" hidden>
+      <section class="section analysis">
+        <div class="section-title"><p class="eyebrow">Базовый прогноз</p><h2 id="analysis-heading">Где возникает риск</h2></div>
+        <div class="metrics">
+          <article class="metric danger"><span>Минимальный остаток</span><strong id="min-balance"></strong><small id="min-date"></small></article>
+          <article class="metric"><span>Кассовый разрыв</span><strong id="gap"></strong><small>глубина и длительность</small></article>
+          <article class="metric"><span>Просроченная дебиторка</span><strong id="overdue"></strong><small id="debtor"></small></article>
+        </div>
+        <div class="panel chart-panel"><div><h3>Прогноз остатка</h3><p>Красная линия — исходный платёжный календарь.</p></div><svg id="forecast-chart" viewBox="0 0 760 250" role="img" aria-label="График прогноза остатка"></svg></div>
+        <div class="split">
+          <article class="panel"><h3>Возраст просрочки</h3><div id="aging" class="aging"></div></article>
+          <article class="panel"><h3>Вывод</h3><p>Проверьте крупнейшие выплаты перед датой минимального остатка и оцените допустимость переноса.</p><p class="muted">Это управленческий сценарий, а не бухгалтерская рекомендация.</p></article>
+        </div>
+      </section>
+
+      <section class="section scenario">
+        <div class="section-title"><p class="eyebrow">What-if анализ</p><h2>Проверьте перенос платежа</h2></div>
+        <div class="scenario-form">
+          <label class="field"><span>Исходящий платёж</span><select id="payment"></select></label>
+          <label class="field"><span>Новая дата</span><input id="new-date" type="date" value="2026-12-16"></label>
+          <button id="run-scenario" class="button" type="button">Пересчитать сценарий</button>
+        </div>
+        <article id="scenario-result" class="scenario-result" hidden>
+          <div><p class="eyebrow">Результат решения</p><h3 id="scenario-status"></h3><p id="scenario-description"></p></div>
+          <div class="scenario-kpi"><span>Новый минимум</span><strong id="scenario-min"></strong><small id="scenario-delta"></small></div>
+          <svg id="scenario-chart" viewBox="0 0 760 250" role="img" aria-label="График после переноса платежа"></svg>
+          <button id="download-report" class="button secondary" type="button" disabled>Скачать отчёт .md</button>
+        </article>
+      </section>
+
+      <section class="section"><div class="section-title"><p class="eyebrow">Расшифровка</p><h2>Операции и остаток</h2></div><div class="table-wrap"><table><thead><tr><th>Дата</th><th>Контрагент</th><th>Тип</th><th>Сумма</th><th>Остаток</th></tr></thead><tbody id="timeline"></tbody></table></div></section>
+    </div>
+  </main>
+  <footer><span>CashFlow Radar · учебный проект</span><span>Вымышленные корпоративные данные</span></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

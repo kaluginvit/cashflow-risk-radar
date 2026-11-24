@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Кейс разработки CashFlow Radar — аналитики платёжного календаря и кассовых разрывов.">
+  <title>Кейс CashFlow Radar</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23123f2c%22/><path d=%22M13 43 25 31l9 7 17-19%22 fill=%22none%22 stroke=%22%23c9f05b%22 stroke-width=%226%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22/></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="case.css">
+</head>
+<body class="case-page">
+  <div class="disclaimer">Портфолио-кейс · все компании и финансовые данные вымышлены</div>
+  <header>
+    <nav><a class="brand" href="index.html">CF/RADAR</a><a href="index.html">Открыть инструмент</a></nav>
+    <div class="case-hero">
+      <p class="eyebrow">Финансовая аналитика · веб-приложение</p>
+      <h1>Кассовый разрыв обнаружен и устранён в сценарии до даты платежа</h1>
+      <p class="lead">CashFlow Radar превращает корпоративный платёжный календарь в прогноз остатка, анализ дебиторки и проверяемое управленческое решение.</p>
+      <div class="case-metrics"><div><span>Исходный минимум</span><strong>−550 000 ₽</strong></div><div><span>После сценария</span><strong>+50 000 ₽</strong></div><div><span>Эффект</span><strong>+600 000 ₽</strong></div></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="case-section intro-grid">
+      <div><p class="eyebrow">Задача</p><h2>Увидеть риск заранее</h2><p>Финансовому менеджеру нужно проверить, хватит ли денег на запланированные выплаты, где возникнет отрицательный остаток и какое действие стоит обсудить до даты платежа.</p></div>
+      <div class="case-card"><span>Моя роль</span><strong>Аналитика, логика расчёта, интерфейс, тестирование и публикация</strong><p>Проект создан с нуля как самостоятельный учебный продукт.</p></div>
+    </section>
+
+    <section class="case-section"><img class="cover-image" src="assets/01_cover.png" alt="Панель CashFlow Radar с ключевыми финансовыми показателями"></section>
+
+    <section class="case-section"><p class="eyebrow">Решение</p><h2>От CSV до управленческого сценария</h2><div class="steps"><article><strong>Локальный импорт</strong><p>CSV обрабатывается только в браузере и не передаётся на сервер.</p></article><article><strong>Аналитика</strong><p>Прогноз остатка, кассовый разрыв, aging и концентрация дебиторки.</p></article><article><strong>What-if</strong><p>Перенос платежа немедленно пересчитывает минимальный остаток.</p></article><article><strong>Доказательство</strong><p>Отчёт Markdown фиксирует исходный риск, решение и измеримый эффект.</p></article></div></section>
+
+    <section class="case-section comparison">
+      <div><p class="eyebrow">До</p><h2>Разрыв −550 000 ₽</h2><p>Платёжный календарь уходит в минус 13 декабря. Просроченная дебиторка — 480 000 ₽, крупнейший должник формирует 62,5% суммы.</p><a href="assets/02_before.png"><img src="assets/02_before.png" alt="Исходный прогноз с кассовым разрывом минус 550 тысяч рублей"></a></div>
+      <div><p class="eyebrow">После</p><h2>Минимум +50 000 ₽</h2><p>Перенос выплаты P005 с 13 на 16 декабря устраняет отрицательный остаток. Улучшение минимального остатка — 600 000 ₽.</p><a href="assets/03_after.png"><img src="assets/03_after.png" alt="Сценарий после переноса платежа с положительным остатком 50 тысяч рублей"></a></div>
+    </section>
+
+    <section class="case-section result"><div><p class="eyebrow">Проверка</p><h2>Результат воспроизводится</h2><p>Контрольный CSV входит в репозиторий. Автотесты проверяют шесть групп требований: импорт, прогноз, дебиторку, концентрацию, сценарий и ошибки данных. Интерфейс проверен на desktop и mobile.</p></div><a class="button" href="index.html">Повторить сценарий</a></section>
+
+    <section class="case-section offer"><p class="eyebrow">Для заказчика</p><h2>Готов разработать похожий аналитический инструмент</h2><p>Например: платёжный календарь, контроль дебиторки, план-факт бюджета или управленческий дашборд из CSV/Excel с согласованными формулами и тестовым сценарием.</p></section>
+  </main>
+  <footer><span>CashFlow Radar · кейс 2026</span><span>Учебные вымышленные данные</span></footer>
+</body>
+</html>
