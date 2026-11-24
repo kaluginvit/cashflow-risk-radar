@@ -1,5 +1,12 @@
 # CashFlow Radar
 
+Публичные материалы:
+
+- приложение: https://kaluginvit.github.io/cashflow-risk-radar/
+- кейс с двумя кадрами: https://kaluginvit.github.io/cashflow-risk-radar/case.html
+- проверенный релиз v1.0.0: https://github.com/kaluginvit/cashflow-risk-radar/releases/tag/v1.0.0
+- репозиторий: https://github.com/kaluginvit/cashflow-risk-radar
+
 Браузерный инструмент для анализа платёжного календаря, кассовых разрывов и просроченной дебиторской задолженности.
 
 Приложение работает полностью локально: загруженный CSV не передаётся на сервер и не сохраняется во внешних системах.
